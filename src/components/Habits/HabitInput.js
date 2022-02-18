@@ -58,7 +58,7 @@ const HabitInput = ({
       </form>
       <div className="sort">
         <label>SORT BY:</label>
-        <button onClick={handleHabitSort} value="priority" className={`${habitSort.includes('priority') ? "sort-selected" : ""}`}><i className="bi bi-star-fill"></i> priority</button>
+        <button onClick={handleHabitSort} value="priority" className={`${habitSort.includes('priority') ? "selected" : ""}`}><i className="bi bi-star-fill"></i> priority</button>
       </div>
     </div>
   )
