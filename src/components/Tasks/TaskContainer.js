@@ -12,6 +12,7 @@ const TaskContainer = ({today}) => {
   const [list, setList] = useState([]);
   const [listSort, setListSort] = useState([]);
   const [sortedList, setSortedList] = useState([]);
+  const [editing, setEditing] = useState(false);
   
   const handleSortList = () => {
     let listCopy = [...list];
@@ -69,9 +70,9 @@ const TaskContainer = ({today}) => {
         taskPriority={taskPriority} setTaskPriority={setTaskPriority}
         list={list} setList={setList} 
         listSort={listSort} setListSort={setListSort}
+        editing={editing} setEditing={setEditing}
       />
-      <div className="help-text">Double click on a task to delete it!</div>
-      <TaskList today={today} list={list} setList={setList} listSort={listSort} sortedList={sortedList} />
+      <TaskList today={today} list={list} setList={setList} listSort={listSort} sortedList={sortedList} editing={editing} />
     </section>
   )
 }

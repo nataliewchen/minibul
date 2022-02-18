@@ -1,7 +1,7 @@
 import React from 'react';
 import Task from './Task';
 
-const Weekday = ({weekday, date, list, setList, today, sortedList}) => {
+const Weekday = ({weekday, date, list, setList, today, sortedList, editing}) => {
   const dateTasks = sortedList.filter(task => task.date === weekday)
   return (
     <div className={`weekday ${dateTasks.length === 0 ? "hide-weekday" : ""}`}>
@@ -10,7 +10,7 @@ const Weekday = ({weekday, date, list, setList, today, sortedList}) => {
         <h4 className={`${today.weekday === weekday ? "highlight-today" : ""}`}>{date}</h4>
       </div>
       <ul>
-        {dateTasks.map(task => <Task task={task} setList={setList} key={task.id} />)}
+        {dateTasks.map(task => <Task task={task} setList={setList} editing={editing} key={task.id} />)}
       </ul>
     </div>
   );

@@ -124,10 +124,6 @@
   font-size: 1.2em;
 }
 
-.task-text:hover {
-  cursor: pointer;
-}
-
 .hide-check {
   color: white;
 }
@@ -630,9 +626,16 @@ form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 0.5rem;
 }
 
@@ -663,20 +666,49 @@ button {
   border-bottom-right-radius: 0;
 }
 
-.sort {
+.options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3em;
+}
+
+@media only screen and (max-width: 599px) {
+  .options {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 0;
+  }
+}
+
+.sort,
+.edit {
   margin-top: 0.5rem;
   font-size: 0.8rem;
   letter-spacing: 0.05rem;
 }
 
-.sort button {
+.sort button,
+.edit button {
   padding: 0.2rem 0.4rem;
   margin-left: 0.5rem;
   font-size: 0.7rem;
   letter-spacing: 0.02rem;
 }
 
-.sort-selected {
+.selected {
   background-color: var(--base);
   color: white;
 }

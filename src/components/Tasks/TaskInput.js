@@ -6,7 +6,8 @@ const TaskInput = ({
   taskDate, setTaskDate, 
   taskPriority, setTaskPriority,
   list, setList,
-  listSort, setListSort}) => {
+  listSort, setListSort,
+  editing, setEditing}) => {
 
   const handleTextChange = (e) => {
     setTaskText(e.target.value);
@@ -46,6 +47,10 @@ const TaskInput = ({
     }
   }
 
+  const toggleEdit = () => {
+    setEditing(!editing);
+  }
+
   return (
     <div>
       <form>
@@ -80,10 +85,16 @@ const TaskInput = ({
           </button>
         </div>
       </form>
-      <div className="sort">
-        <label>SORT BY:</label>
-        <button onClick={handleListSort} value="priority" className={`${listSort.includes('priority') ? "sort-selected" : ""}`}><i className="bi bi-star-fill"></i> priority</button>
-        <button onClick={handleListSort} value="completion" className={`${listSort.includes('completion') ? "sort-selected" : ""}`}><i className="bi bi-check-lg"></i> completion</button>
+      <div className="options">
+        <div className="sort">
+          <label>SORT BY:</label>
+          <button onClick={handleListSort} value="priority" className={`${listSort.includes('priority') ? "selected" : ""}`}><i className="bi bi-star-fill"></i> priority</button>
+          <button onClick={handleListSort} value="completion" className={`${listSort.includes('completion') ? "selected" : ""}`}><i className="bi bi-check-lg"></i> completion</button>
+        </div>
+        <div className="edit">
+          <label>DELETE TASKS:</label>
+          <button onClick={toggleEdit} className={editing ? "selected" : ""}><i className={`bi ${editing? "bi-unlock-fill" : "bi-lock-fill"}`}></i></button>
+        </div>
       </div>
     </div>
     );

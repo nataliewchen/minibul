@@ -50,9 +50,3 @@
     width: $desktopWide;
   }
 }
-
-@mixin hover-pointer {
-  &:hover {
-    cursor: pointer;
-  }
-}
