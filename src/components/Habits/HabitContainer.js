@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import '../../css/Habits.css';
 
 // components
 import HabitInput from './HabitInput';

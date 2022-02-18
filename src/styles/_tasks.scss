@@ -1,25 +1,38 @@
 /* TASKS CONTAINER */
 .task-input-right {
-  display: flex;
-  justify-content: center;
+  @include flexbox();
   gap: 0.5rem;
 }
 
 .weekday-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: top;
+  @include flexbox(row, space-around, top);
   margin-top: 1.5rem;
+
+  @include mq(mobile) {
+    flex-direction: column;
+    width: 80%;
+    margin: 1rem auto;
+  }
 }
 
 .weekday {
   border-left: 1px dotted var(--base);
   text-align: center;
   flex: 1 1 100px;
-}
 
-.weekday:first-child {
-  border: none;
+  &:first-child {
+    border: none;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  @include mq(mobile) {
+    margin-bottom: 0;
+    border: none;
+  }
 }
 
 .weekday-header h5,
@@ -33,38 +46,35 @@
   font-size: 2rem;
 }
 
-.weekday ul {
-  list-style: none;
-  padding: 0;
-}
-
 .task {
   text-align: left;
   font-size: 0.65rem;
   margin: 0 1vw 0.4rem;
-  display: flex;
-  align-items: center;
+  position: relative;
+  @include flexbox(row, flex-start, center);
+
+  button {
+    font-size: 0.7rem;
+    padding: 0.05rem;
+  }
+
+  @include mq(mobile) {
+    margin: 0.5rem 15vw 0;
+  }
+}
+
+.delete-task {
+  position: absolute;
+  background-color: rgb(199, 85, 85);
+  color: white;
 }
 
 .task-text {
   margin-left: 0.5rem;
   user-select: none;
   font-size: 1.2em;
-}
 
-.task-text:hover {
-  cursor: pointer;
-}
-
-.task button {
-  font-size: 0.7rem;
-  padding: 0.05rem;
-}
-
-.task .delete-task {
-  position: absolute;
-  background-color: rgb(199, 85, 85);
-  color: white;
+  @include hover-pointer;
 }
 
 .hide-check {
@@ -75,42 +85,25 @@
   display: none;
 }
 
-@media screen and (max-width: 599px) {
+@include mq(mobile) {
   .task-container form {
     flex-direction: column;
-  }
-
-  .weekday-container {
-    flex-direction: column;
-    width: 80%;
-    margin: 1rem auto;
   }
 
   .hide-weekday {
     display: none;
   }
 
-  .weekday {
-    margin-bottom: 0;
-    border: none;
-  }
-
   .weekday-header {
     border-bottom: 1px solid var(--base);
-    display: flex;
-    justify-content: space-around;
-    align-items: baseline;
-  }
+    @include flexbox(row, space-around, baseline);
 
-  .weekday-header h5 {
-    font-size: 1rem;
-  }
+    h5 {
+      font-size: 1rem;
+    }
 
-  .weekday-header h4 {
-    font-size: 1.5rem;
-  }
-
-  .task {
-    margin: 0.5rem 15vw 0;
+    h4 {
+      font-size: 1.5rem;
+    }
   }
 }

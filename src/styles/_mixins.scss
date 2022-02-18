@@ -1,0 +1,58 @@
+@mixin flexbox($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin mq($breakpoint) {
+  @if $breakpoint==mobile {
+    @media only screen and (max-width: 599px) {
+      @content;
+    }
+  }
+  @if $breakpoint==tablet {
+    @media only screen and (min-width: 600px) {
+      @content;
+    }
+  }
+  @if $breakpoint==tabletWide {
+    @media only screen and (min-width: 900px) {
+      @content;
+    }
+  }
+  @if $breakpoint==desktop {
+    @media only screen and (min-width: 1200px) {
+      @content;
+    }
+  }
+  @if $breakpoint==desktopWide {
+    @media only screen and (min-width: 1800px) {
+      @content;
+    }
+  }
+}
+
+@mixin res-width($mobile, $tablet, $tabletWide, $desktop, $desktopWide) {
+  @include mq(mobile) {
+    width: $mobile;
+  }
+  @include mq(tablet) {
+    width: $tablet;
+  }
+  @include mq(tabletWide) {
+    width: $tabletWide;
+  }
+  @include mq(desktop) {
+    width: $desktop;
+  }
+  @include mq(desktopWide) {
+    width: $desktopWide;
+  }
+}
+
+@mixin hover-pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}

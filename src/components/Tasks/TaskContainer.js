@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import '../../css/Tasks.css';
 
 // components
 import TaskInput from './TaskInput';

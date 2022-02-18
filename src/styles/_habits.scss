@@ -1,17 +1,20 @@
 .habit-tracker {
   margin: 2rem auto;
   padding-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
+  @include flexbox(column, center, normal);
   gap: 1rem;
+
+  @include res-width(100%, 80%, 60%, 50%, 40%);
 }
 
 .habit-header-dates {
-  display: flex;
-  justify-content: right;
-  align-items: center;
+  @include flexbox(row, right, center);
   gap: 1.5rem;
   border-bottom: 1px solid var(--base);
+
+  @include mq(mobile) {
+    justify-content: center;
+  }
 }
 
 .habit-header-date {
@@ -26,20 +29,31 @@
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
+
+  @include mq(mobile) {
+    flex-direction: column;
+    margin-bottom: 0.7rem;
+  }
 }
 
 .habit-content {
   flex-grow: 1;
-  display: flex;
-  align-items: center;
+  @include flexbox(row, space-between, center);
   margin-right: 2rem;
-  justify-content: space-between;
   text-align: right;
+
+  @include mq(mobile) {
+    @include flexbox(row-reverse, center);
+    margin: 0 0 0.4rem 0;
+  }
+
+  @include mq(tablet) {
+    margin-right: 1rem;
+  }
 }
 
 .habit-checkbox-row {
-  display: flex;
-  align-items: center;
+  @include flexbox();
   gap: 1.5rem;
 }
 
@@ -47,6 +61,11 @@
   display: inline-flex;
   margin-right: 1rem;
   white-space: nowrap;
+
+  @include mq(mobile) {
+    margin: 0 0 0 1rem;
+    flex-direction: row-reverse;
+  }
 }
 
 .habit-btns i {
@@ -75,68 +94,14 @@
   border-color: white;
 }
 
-@media screen and (max-width: 319px) {
+@media screen and (max-width: 330px) {
   .habit-container form {
-    display: flex;
-    flex-direction: column;
+    @include flexbox(column);
   }
 
   .habit-container form button[type="submit"] {
     display: inline;
     width: 30%;
     margin: 0 auto;
-  }
-}
-
-@media screen and (max-width: 599px) {
-  .habit-tracker {
-    width: 100%;
-  }
-  .habit-header-dates {
-    justify-content: center;
-  }
-
-  .habit {
-    flex-direction: column;
-    margin-bottom: 0.7rem;
-  }
-
-  .habit-content {
-    flex-direction: row-reverse;
-    justify-content: center;
-    margin: 0 0 0.4rem 0;
-  }
-
-  .habit-btns {
-    margin: 0 0 0 1rem;
-    flex-direction: row-reverse;
-  }
-}
-
-@media screen and (min-width: 600px) {
-  .habit-tracker {
-    width: 80%;
-  }
-
-  .habit-content {
-    margin-right: 1rem;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  .habit-tracker {
-    width: 60%;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .habit-tracker {
-    width: 50%;
-  }
-}
-
-@media screen and (min-width: 1800px) {
-  .habit-tracker {
-    width: 40%;
   }
 }
